@@ -136,12 +136,12 @@ def _create_tf_record(annotation_file: str,
 
 if __name__ == '__main__':
     #CHÚ Ý NẾU SỬ DỤNG TÊN LABEL KHÁC THÌ PHẢI ĐỔI TÊN LABEL TRONG FILE BASE ĐỂ KHỚP VỚI TÊN MÌNH ĐẶT
-    train_or_test = "test"
-    file = f"{train_or_test}_passport_inf"
+    train_or_test = "train"
+    file = f"{train_or_test}_cropped_id_221021"
     file_ano = f"{file}.txt"
     label_source = LabelSource.LABEL_VOC
-    image_dir = f"/media/huyphuong/huyphuong99/tima/project/passport/raw_data/cropped/partition_data/{file}"
-    workdir = f"/media/huyphuong/huyphuong99/tima/project/passport/raw_data/cropped/file_nessesary"
+    image_dir = f"/home/huyphuong99/Desktop/huyphuong99/tima/project/id/project_tima/info_id_do_an/data_raw/raw_image/raw_new_image/cropped_new_cccd_221021/partion_data/{file}"
+    workdir = f"/home/huyphuong99/Desktop/huyphuong99/tima/project/id/project_tima/info_id_do_an/data_raw/raw_image/raw_new_image/cropped_new_cccd_221021/file_necessary"
     include_keypoint = True if label_source == LabelSource.LABEL_ME else False
     num_shards = 1
     annotation_file = os.path.join(workdir, f"file_annotation/{file_ano}")

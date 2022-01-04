@@ -17,6 +17,7 @@ CHARSET_CONTAINS = set()
 
 
 def generate_charset(charset: str, output_path: str):
+    charset = sorted(charset)
     output_file = output_path + "=" + str(len(charset) + 1) + ".txt"
     f = open(output_file, 'w')
     f.write(f"{0}\t{NULL_CHAR}\n")
@@ -339,8 +340,10 @@ def main():
 if __name__ == '__main__':
     # main()
     # charset_file = generate_charset(
-    #     "aAàÀảẢãÃáÁạẠăĂằẰẳẲẵẴắẮặẶâÂầẦẩẨẫẪấẤậẬbBcCdDđĐeEèÈẻẺẽẼéÉẹẸêÊềỀểỂễỄếẾệỆfFgGhHiIìÌỉỈĩĨíÍịỊjJkKlLmMnNoOòÒỏỎõÕóÓọỌôÔồỒổỔỗỖốỐộỘơƠờỜởỞỡỠớỚợỢpPqQrRsStTuUùÙủỦũŨúÚụỤưƯừỪửỬữỮứỨựỰvVwWxXyYỳỲỷỶỹỸýÝỵỴzZ0123456789!\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~ ",
-    #     "charsets/full_characters")
+    #     " .-0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+    #     "/home/huyphuong99/PycharmProjects/data_tfrecords/charsets/vr_plate")
+    # print(charset_file)
+
     # exit(0)
     DEBUG = False
     # tf_records(["/media/data_it/Data_set/database_image/card/vr/info/date",
@@ -357,13 +360,13 @@ if __name__ == '__main__':
     #            image_shape=(225, 75, 3),
     #            max_len=10,
     #            test_size=0.05)
-    data_name = '1015_Private Test'
-    tf_records([f"/media/data_it/Data_set/database_image/ocr/handwritten/Challenge 1_ Handwriting OCR for Vietnamese Address/{data_name}",
-                ],
-               labels_file=f"/media/data_it/Data_set/database_image/ocr/handwritten/Challenge 1_ Handwriting OCR for Vietnamese Address/{data_name}.csv",
-               output_dir="/media/thiennt/projects/cv_end_to_end/training/tf_workspace/handwriting_reader/datasets",
-               data_name=f"cinnamon_{data_name}",
-               charset_file="charsets/full_characters=230.txt",
-               image_shape=(512, 32, 3),
-               max_len=200,
-               test_size=0.05)
+    path = "/media/huyphuong99/huyphuong99/tima/project/vr/info_vr/REFORMAT_DATA/PLATE/"
+    data_name = 'plate'
+    tf_records([f"{path}{data_name}",],
+               labels_file=f"{path}{data_name}.csv",
+               output_dir="/home/huyphuong99/PycharmProjects/data_tfrecords/datasets/data_attention",
+               data_name=f"vr_{data_name}",
+               charset_file="/home/huyphuong99/PycharmProjects/data_tfrecords/charsets/vr_plate=40.txt",
+               image_shape=(400, 75, 3),
+               max_len=12,
+               test_size=0.1)

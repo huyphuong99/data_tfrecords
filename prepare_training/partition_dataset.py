@@ -89,7 +89,8 @@ def main():
     parser.add_argument(
         '-x', '--xml',
         help='Set this flag if you want the xml annotation files to be processed and copied over.',
-        action='store_true'
+        action='store_true',
+        default='/home/huyphuong99/Desktop/huyphuong99/tima/project/id/project_tima/info_id_do_an/data_raw/raw_image/raw_new_image/cropped_new_cccd_221021/cropped_221021'
     )
     args = parser.parse_args()
 
